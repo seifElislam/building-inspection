@@ -2,10 +2,14 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from core.models import Building, MetaData, Document
 from core.serializer import UserSerializer, BuildingSerializer, MetaDataSerializer, DocumentSerializer, \
-    GetDocumentSerializer
+    GetDocumentSerializer, RegistrationSerializer
 from core.filters import BuildingFilter, MetaDataFilter, DocumentFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework import status
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -44,3 +48,17 @@ class DocumentViewSet(viewsets.ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return GetDocumentSerializer
         return DocumentSerializer
+
+
+@api_view(['POST', ])
+@permission_classes([AllowAny])
+def registration_view(request):
+    if request.method == 'POST':
+        serializer = RegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            print('saved')
+            return Response({'msg':'account is created'})
+        else:
+            return Response({'msg': serializer.error_messages}, status=status.HTTP_400_BAD_REQUEST)
+

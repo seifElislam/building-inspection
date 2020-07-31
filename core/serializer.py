@@ -80,3 +80,26 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = ('building', 'name', 'url')
+
+
+class RegistrationSerializer(serializers.ModelSerializer):
+
+    password2 = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+        user = User.objects.create(
+            username=validated_data['username']
+        )
+
+        if validated_data['password'] != validated_data['password2']:
+            raise serializers.ValidationError('Passwords don\'t match')
+        user.set_password(validated_data['password'])
+        user.save()
+
+        return user
+
+    class Meta:
+        model = User
+        fields = ("id", "username", "password", "password2")
+
+

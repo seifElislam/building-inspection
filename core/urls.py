@@ -1,5 +1,6 @@
+from django.urls import path
 from rest_framework.routers import DefaultRouter
-from core.views import UserViewSet, BuildingViewSet, MetaDataViewSet, DocumentViewSet
+from core.views import UserViewSet, BuildingViewSet, MetaDataViewSet, DocumentViewSet, registration_view
 
 USER_ROUTER = DefaultRouter()
 USER_ROUTER.register(r'users', UserViewSet, basename='User')
@@ -19,7 +20,7 @@ METADATA_URLS = METADATA_ROUTER.urls
 DOCUMENT_URLS = DOCUMENT_ROUTER.urls
 
 
-urlpatterns = []
+urlpatterns = [path(r'api/register/', registration_view, name='register')]
 urlpatterns += USERS_URLS
 urlpatterns += BUILDINGS_URLS
 urlpatterns += METADATA_URLS
