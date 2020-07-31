@@ -12,6 +12,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '../env_vars', '.env_dev'))
 
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+REGION = env('REGION')
+BUCKET_NAME = env('BUCKET_NAME')
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

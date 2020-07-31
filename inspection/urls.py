@@ -38,6 +38,7 @@ SchemaView = get_schema_view(url=SWAGGER_URL,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/login/', TokenObtainPairView.as_view(), name='login'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('core.urls')),
     path('swagger/', login_required(SchemaView.with_ui('swagger', cache_timeout=1))),
