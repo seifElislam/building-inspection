@@ -17,10 +17,9 @@ before_install:
 
 install:
   - echo "$SETTING_DEV" | base64 -di > env_vars/.env_dev
-  - docker-compose -f docker-compose-build.yaml build --parallel
-  - docker-compose -f docker-compose-build.yaml push
+  - docker build -t inspection docker/dev/Dockerfile .
+  - docker push $DOCKER_USERNAME/inspection:$TRAVIS_BUILD_NUMBER
 
 branches:
   only:
     - dev
-    - master
