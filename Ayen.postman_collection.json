@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "f641e30a-c4ad-4c7b-a04e-41e7b328e570",
+		"name": "Ayen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"username\": \"user\",\n\"password\": \"xxx\",\n\"password2\": \"xxx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-96-131-197.ca-central-1.compute.amazonaws.com:9000/api/register/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-96-131-197",
+						"ca-central-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"username\": \"adminUser\",\n\"password\": \"xxxx\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-96-131-197.ca-central-1.compute.amazonaws.com:9000/api/login/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-96-131-197",
+						"ca-central-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
