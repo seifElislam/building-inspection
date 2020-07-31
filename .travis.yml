@@ -18,6 +18,7 @@ before_install:
 install:
   - echo "$SETTING_DEV" | base64 -di > env_vars/.env_dev
   - docker build -t inspection -f docker/dev/Dockerfile .
+  - docker images
   - docker push $DOCKER_USERNAME/inspection
 
 branches:
